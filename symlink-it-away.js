@@ -47,7 +47,16 @@ function symlinkItAway(path) {
     } else {
       log(`Symlinking away: ${path}`)
       fs.mkdirSync(n_path.dirname(relocatedPath), {recursive: true})
-      fs.renameSync(path, relocatedPath)
+      try {
+        fs.renameSync(path, relocatedPath)
+      } catch (error) {
+        // if moving a directory and the target dir is not empty
+        if (error.code == 'ENOTEMPTY') {
+          log(`Target directory not empty, deleting it... 😜`)
+          fs.rmSync(relocatedPath, {recursive: true})
+          fs.renameSync(path, relocatedPath) // trying again
+        } else throw error
+      }
       fs.symlinkSync(relocatedPath, path)
     }
   } catch (error) {
