@@ -1,0 +1,18 @@
+{
+  "name": "symlink-it-away",
+  "type": "module",
+  "version": "1.0.0",
+  "author": "Joakim L. Christiansen (https://joakimch.github.io)",
+  "license": "MIT",
+  "bin": "./symlink-it-away.js",
+  "repository": "github:JoakimCh/symlink-it-away",
+  "funding": "https://joakimch.github.io/funding.html",
+  "description": "A tool I made mainly to symlink away shit from Dropbox.",
+  "keywords": [
+    "symlink",
+    "away",
+    "shit",
+    "from",
+    "Dropbox"
+  ]
+}
